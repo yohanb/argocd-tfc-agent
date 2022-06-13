@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: tf-agent-app
+  name: tfc-agent-app
   namespace: argocd
 spec:
   project: default
   source:
     path: base
-    repoURL: https://github.com/yohanb/argocd-tf-cloud-agent
+    repoURL: https://github.com/yohanb/argocd-tfc-agent
     targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
-    namespace: tf-agents
+    namespace: tfc-agents
   syncPolicy:
     syncOptions:
       - CreateNamespace=true

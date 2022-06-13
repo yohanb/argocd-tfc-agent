@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tf-agents
+  name: tfc-agents
   labels:
-    app: tf-agents
+    app: tfc-agents
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tf-agents
+      app: tfc-agents
   template:
     metadata:
       labels:
-        app: tf-agents
+        app: tfc-agents
     spec:
       containers:
-        - name: tf-agent
+        - name: tfc-agent
           image: hashicorp/tfc-agent:1.2.3
