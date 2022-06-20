@@ -1,0 +1,11 @@
+{
+  "extends": [
+    "config:base"
+  ],
+  "kustomize": {
+    "enabled": false
+  },
+  "kubernetes": {
+    "fileMatch": ["^deployments/.*\\.yaml$"]
+  }
+}

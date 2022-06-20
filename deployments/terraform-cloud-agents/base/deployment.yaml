@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tfc-agents
+  labels:
+    app: tfc-agents
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tfc-agents
+  template:
+    metadata:
+      labels:
+        app: tfc-agents
+    spec:
+      containers:
+        - name: tfc-agent
+          image: hashicorp/tfc-agent:1.2.2
+          env:
+            - name: TFC_AGENT_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+          envFrom:
+            - secretRef:
+                name: tfc
+          resources:
+            requests:
+              cpu: "2"
+              memory: 5Gi
+            limits:
+              cpu: "5"
+              memory: 10Gi
+  strategy:
+    type: Recreate
